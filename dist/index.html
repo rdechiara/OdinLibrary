@@ -24,8 +24,9 @@
     </noscript>
     <div id="root">
         <h1>The Odin library</h1>
-        <form class="outline">
-            <a class="button-clear">X</a>
+        <a class="button-clear" id="toggle-button">X</a>
+        <form class="outline" id="book-form">
+            
             <h3>Add a book to your library</h3>
             <label for="title">Title</label>
             <input type="text" name="title" id="title" placeholder="" required>
@@ -40,7 +41,7 @@
                 <input type="radio" name="read" value="no">
                 <label class="label-inline">No</label>
             </fieldset>
-            <button class="primary-button">Confirm</button>
+            <button class="primary-button" id="add-button">Confirm</button>
         </form>
         <blockquote>
             <a class="button-clear">X</a>
@@ -49,5 +50,7 @@
             <strong> Already read:</strong><span> yes</span>
         </blockquote>
     </div>
+    <!--App logic-->
+    <script src="dist/main.js"></script>
 </body>
 </html>
