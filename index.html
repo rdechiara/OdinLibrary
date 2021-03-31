@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/dist/milligram.min.css">
+    <style>
+        h1
+        {
+            text-align: center;
+        }
+        .outline
+        {
+            border: 1px solid #d1d1d1;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <noscript>
+        <p>Javascript must be enabled to order to run this application</p>
+    </noscript>
+    <div id="root">
+        <h1>The Odin library</h1>
+        <form class="outline">
+            <a class="button-clear">X</a>
+            <h3>Add a book to your library</h3>
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" placeholder="" required>
+
+            <label for="author">Author</label>
+            <input type="text" name="author" id="author" placeholder="" required>
+
+            <label for="read" class="label-inline">Already read</label>
+            <fieldset>
+                <input type="radio" name="read" value="yes" checked>
+                <label class="label-inline">Yes</label>
+                <input type="radio" name="read" value="no">
+                <label class="label-inline">No</label>
+            </fieldset>
+            <button class="primary-button">Confirm</button>
+        </form>
+        <blockquote>
+            <a class="button-clear">X</a>
+            <p><strong>Title: </strong><span>Big hopes</span></p>
+            <p><strong>Author: </strong><span>Charles Dickens</span></p>
+            <strong> Already read:</strong><span> yes</span>
+        </blockquote>
+    </div>
+</body>
+</html>
