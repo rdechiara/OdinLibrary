@@ -4,7 +4,7 @@ const app = (function()
     let form = undefined;
     let addButton = undefined;
     let toggleButton = undefined;
-    let books = [];
+    let inventory = [];
 
     function setContainer(id)
     {
@@ -19,6 +19,13 @@ const app = (function()
     function setAddBookButton(id)
     {
         addButton = document.getElementById(id);
+        addButton.onclick = (e) =>
+        {
+            
+            const book = getInput();
+            inventory.push(book);
+            renderBook(book.title, book.author, book.read);
+        }
         console.log(`addButton is ${addButton}`);
     }
     function setToggleButton(id)
@@ -44,6 +51,36 @@ const app = (function()
         }
     }
 
+    function getInput()
+    {
+        const title = document.getElementById(`title`).value;
+        const author = document.getElementById(`author`).value;
+        const read = document.getElementById(`read-yes`).checked;
+        console.log(title, author, read);
+
+        return {title, author, read};
+
+    }
+
+    function renderBook(title, author, read)
+    {
+        const card = document.createElement(`blockquote`);
+        const close = document.createElement(`a`);
+        close.textContent = `X`;
+        close.classList.add(`button-outline`)
+        close.onclick = (e) =>
+        {
+            e.target.parentNode.remove();
+        };
+        
+        card.innerHTML = `
+        <p><strong>Title: </strong><span> ${title}</span></p>
+        <p><strong>Author: </strong><span> ${author}</span></p>
+        <strong> Already read:</strong><span> ${read}</span>
+    </blockquote>`;
+        card.prepend(close);
+        container.append(card);
+    }
     return {setContainer, setForm, setAddBookButton, setToggleButton};
 })();
 

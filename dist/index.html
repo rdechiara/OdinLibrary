@@ -25,7 +25,7 @@
     <div id="root">
         <h1>The Odin library</h1>
         <a class="button-clear" id="toggle-button">X</a>
-        <form class="outline" id="book-form">
+        <div class="outline" id="book-form">
             
             <h3>Add a book to your library</h3>
             <label for="title">Title</label>
@@ -36,19 +36,13 @@
 
             <label for="read" class="label-inline">Already read</label>
             <fieldset>
-                <input type="radio" name="read" value="yes" checked>
+                <input type="radio" name="read" id="read-yes" value="yes" checked>
                 <label class="label-inline">Yes</label>
                 <input type="radio" name="read" value="no">
                 <label class="label-inline">No</label>
             </fieldset>
-            <button class="primary-button" id="add-button">Confirm</button>
-        </form>
-        <blockquote>
-            <a class="button-clear">X</a>
-            <p><strong>Title: </strong><span>Big hopes</span></p>
-            <p><strong>Author: </strong><span>Charles Dickens</span></p>
-            <strong> Already read:</strong><span> yes</span>
-        </blockquote>
+            <button type="submit" class="primary-button" id="add-button">Confirm</button>
+        </div>
     </div>
     <!--App logic-->
     <script src="dist/main.js"></script>
