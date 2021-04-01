@@ -6,16 +6,27 @@ const app = (function()
     let toggleButton = undefined;
     let inventory = [];
 
+    /*
+    ** Set the container id for the app
+    */
     function setContainer(id)
     {
         container = document.getElementById(id);
         console.log(`container is ${container}`);
     }
+    /*
+    ** Set the form id from which book
+    ** info are retrieved
+    */
     function setForm(id)
     {
         form = document.getElementById(id);
         console.log(`form is ${form}`);
     }
+    /*
+    ** Set callback for form's button
+    ** which adds a book to the library
+    */
     function setAddBookButton(id)
     {
         addButton = document.getElementById(id);
@@ -34,13 +45,18 @@ const app = (function()
         }
         console.log(`addButton is ${addButton}`);
     }
+    /*
+    ** Assign callback function to the toggle button (id)
+    */
     function setToggleButton(id)
     {
         toggleButton = document.getElementById(id);
         toggleButton.onclick = toggleForm;
         console.log(`toggleButton is ${toggleButton}`);
     }
-
+    /*
+    ** Toggle the form
+    */
     function toggleForm()
     {
         const formStatus = form.style.display;
@@ -56,20 +72,28 @@ const app = (function()
             toggleButton.textContent = `X`;
         }
     }
-
+    /*
+    ** Retrieve data from form
+    */
     function getInput()
     {
-        const title = document.getElementById(`title`).value;
-        const author = document.getElementById(`author`).value;
-        const read = document.getElementById(`read-yes`).checked;
-        const book = {title, author, read};
-        title.value = "";
-        author.value = "";
+        const titleInput = document.getElementById(`title`);
+        const authorInput = document.getElementById(`author`);
+        const readInput = document.getElementById(`read-yes`);
 
-        return book;
+        const title = titleInput.value;
+        const author = authorInput.value;
+        const read = readInput.checked;
 
+        titleInput.value = ``;
+        authorInput.value = ``;
+        
+
+        return {title, author, read};
     }
-
+    /*
+    ** Render the book in a simple card
+    */
     function renderBook(title, author, read)
     {
         const card = document.createElement(`blockquote`);
@@ -97,7 +121,7 @@ const app = (function()
     
     return {setContainer, setForm, setAddBookButton, setToggleButton};
 })();
-
+// app setup
 app.setContainer(`root`);
 app.setForm(`book-form`);
 app.setAddBookButton(`add-button`);
