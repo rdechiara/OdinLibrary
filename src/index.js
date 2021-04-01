@@ -60,6 +60,7 @@ const app = (function()
     function toggleForm()
     {
         const formStatus = form.style.display;
+
         if(formStatus === `block`)
         {
             form.style.display = `none`;
@@ -77,17 +78,18 @@ const app = (function()
     */
     function getInput()
     {
+        // get the input nodes
         const titleInput = document.getElementById(`title`);
         const authorInput = document.getElementById(`author`);
         const readInput = document.getElementById(`read-yes`);
-
+        // save their value
         const title = titleInput.value;
         const author = authorInput.value;
         const read = readInput.checked;
-
+        // clear input fields
         titleInput.value = ``;
         authorInput.value = ``;
-        
+
 
         return {title, author, read};
     }
@@ -96,11 +98,14 @@ const app = (function()
     */
     function renderBook(title, author, read)
     {
+        // create parent element for book card
         const card = document.createElement(`blockquote`);
         card.name = `${title} ${author}`;
+
         const close = document.createElement(`a`);
         close.textContent = `X`;
         close.classList.add(`button-outline`)
+        // assign callback for deketing a book
         close.onclick = (e) =>
         {
             const name = e.target.name;
@@ -109,7 +114,7 @@ const app = (function()
             e.target.parentNode.remove();
             console.log(inventory);
         };
-        
+        // render html card
         card.innerHTML = `
         <p><strong>Title: </strong><span> ${title}</span></p>
         <p><strong>Author: </strong><span> ${author}</span></p>
