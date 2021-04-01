@@ -23,8 +23,14 @@ const app = (function()
         {
             
             const book = getInput();
+            if(book.title === `` || book.author === ``)
+            {
+                return;
+            }
             inventory.push(book);
             renderBook(book.title, book.author, book.read);
+            e.preventDefault();
+
         }
         console.log(`addButton is ${addButton}`);
     }
@@ -56,21 +62,28 @@ const app = (function()
         const title = document.getElementById(`title`).value;
         const author = document.getElementById(`author`).value;
         const read = document.getElementById(`read-yes`).checked;
-        console.log(title, author, read);
+        const book = {title, author, read};
+        title.value = "";
+        author.value = "";
 
-        return {title, author, read};
+        return book;
 
     }
 
     function renderBook(title, author, read)
     {
         const card = document.createElement(`blockquote`);
+        card.name = `${title} ${author}`;
         const close = document.createElement(`a`);
         close.textContent = `X`;
         close.classList.add(`button-outline`)
         close.onclick = (e) =>
         {
+            const name = e.target.name;
+            const idx = inventory.indexOf((book) => name === `${book.title} ${book.author}`);
+            inventory.splice(idx, 1);
             e.target.parentNode.remove();
+            console.log(inventory);
         };
         
         card.innerHTML = `
@@ -81,6 +94,7 @@ const app = (function()
         card.prepend(close);
         container.append(card);
     }
+    
     return {setContainer, setForm, setAddBookButton, setToggleButton};
 })();
 
