@@ -105,7 +105,7 @@ const app = (function()
         const close = document.createElement(`a`);
         close.textContent = `X`;
         close.classList.add(`button-outline`)
-        // assign callback for deketing a book
+        // assign callback for deleting a book
         close.onclick = (e) =>
         {
             const name = e.target.name;
