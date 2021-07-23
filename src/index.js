@@ -64,7 +64,7 @@ const app = (function()
         if(formStatus === `block`)
         {
             form.style.display = `none`;
-            toggleButton.textContent = `+`;
+            toggleButton.textContent = `+ Add new book`;
             toggleButton.style.fontSize = `x-large`;
         }
         else
